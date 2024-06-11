@@ -13,7 +13,7 @@ The project converts audio signals into spectrograms, applies [Singular Value De
 1. **Audio to Spectrogram**: Transform the audio signal into its spectrogram representation using Short-Time Fourier Transform (STFT). This breaks down the audio into time-frequency components.
 2. **Spectrogram to SVD**: Decompose the spectrogram matrix using SVD, which separates it into singular vectors and values, allowing the reduction of dimensionality.
 3. **SVD to Spectrogram**: Truncate the singular values to compress the spectrogram data. The number of singular values retained determines the compression level and quality.
-4. **Spectrogram to Audio**: Reconstruct the audio signal from the compressed spectrogram using Inverse Short-Time Fourier Transform (ISTFT), converting it back into the time domain.
+4. **Spectrogram to Audio**: Reconstruct the audio signal from the compressed spectrogram using the Griffin-Lim algorithm.
 
 ### Griffin-Lim Algorithm
 
