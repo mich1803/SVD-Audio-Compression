@@ -1,7 +1,7 @@
 ![Repository banner](media/aucompsvd_banner.jpg)
 # SVD Audio Compression
 
-Leverage Singular Value Decomposition (SVD) for audio compression, aiming to efficiently reduce audio file sizes while maintaining high sound quality. This project uses the mathematical properties of SVD to achieve significant compression ratios without compromising audio integrity. It explores various levels of decomposition and reconstruction to find the optimal balance between compression ratio and audio fidelity.
+Leverage [Singular Value Decomposition](  https://en.m.wikipedia.org/wiki/Singular_value_decomposition ) (SVD) for audio compression, aiming to efficiently reduce audio file sizes while maintaining high sound quality. This project uses the mathematical properties of SVD to achieve significant compression ratios without compromising audio integrity. It explores various levels of decomposition and reconstruction to find the optimal balance between compression ratio and audio fidelity.
 
 ---
 
