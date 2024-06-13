@@ -20,11 +20,9 @@ The project converts audio signals into spectrograms, applies [Singular Value De
 To improve the quality of the reconstructed audio:
 - **Phase Reconstruction**: After applying SVD, the phase information might be lost or altered. The Griffin-Lim algorithm iteratively estimates the phase to enhance the quality of the reconstructed audio from its magnitude spectrogram.
 
-### Computational and Memory Costs
+### Memory Space Analysis
 
-Understanding the trade-offs involved in SVD-based audio compression:
-- **Computational Costs**: Analyze the processing time and computational resources required for the SVD decomposition and reconstruction. This includes examining the efficiency of handling different sizes of audio data.
-- **Memory Costs**: Evaluate the memory usage during the SVD process, especially in managing large spectrogram matrices. Discuss how the compression ratio affects the overall memory footprint.
+In this project, an analysis of the memory space saved by using SVD for audio compression is also included. This involves comparing the original size of audio files to their compressed versions, taking into account various levels of singular value truncation. The analysis highlights the trade-off between compression ratio and audio quality, providing insights into the effectiveness of SVD in reducing storage requirements without significant loss of sound fidelity.
 
 ---
 
