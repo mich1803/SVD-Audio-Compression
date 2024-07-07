@@ -1,57 +1,74 @@
+close all
 clear
-clc 
+clc
 
-% Script to download song, convert to spectrogram, compress using SVD, reconstruct using Griffin-Lim, and plot/compare
+% URL of the audio file
+audio_url = 'https://raw.githubusercontent.com/mich1803/SVD-Audio-Compression/main/example%20songs%20to%20convert/Tory%20Lanez%20-%20Lavender%20Sunflower.wav';
 
-% Download the song (if not already downloaded)
-url = 'https://raw.githubusercontent.com/mich1803/SVD-Audio-Compression/main/example%20songs%20to%20convert/Tory%20Lanez%20-%20Lavender%20Sunflower.wav';
-filename = 'audio.wav';
+% Step 1: Download the audio file
+disp('Downloading audio file...')
+filename = 'Tory Lanez - Lavender Sunflower.wav';
+websave(filename, audio_url);
+disp('Audio file downloaded.');
 
-if ~exist(filename, 'file')
-    disp('Downloading audio file...');
-    websave(filename, url);
+% Step 2: Read the audio file
+[x, Fs] = audioread(filename);
+
+% Check if the audio is stereo; if so, convert to mono by averaging channels
+if size(x, 2) > 1
+    x = mean(x, 2);  % Convert stereo to mono by averaging channels
 end
 
-% Parameters for spectrogram and compression
-window = hann(1024);
-overlap = 512;
+% Step 3: Convert audio to spectrogram
+window = hamming(512);
+overlap = 256;
 nfft = 1024;
-fs = 44100;
-k = 250; % Number of singular values to keep for compression
-
-% Step 1: Convert audio to spectrogram
-[S_original, f, t] = audio_to_spectrogram(filename, window, overlap, nfft, fs);
-
-% Step 2: Compress spectrogram using SVD
-S_compressed = compress_image_with_svd(abs(S_original), k);
-
-% Step 3: Reconstruct audio from compressed spectrogram using Griffin-Lim
-audio_reconstructed = spectrogram_to_audio(S_compressed .* exp(1i*angle(S_original)), window, overlap, nfft, fs, 10);
-
-% Step 4: Plot original and compressed spectrograms
-figure;
-subplot(2,1,1);
-imagesc(t, f, log(abs(S_original)));
-axis xy;
-xlabel('Time (s)');
-ylabel('Frequency (Hz)');
+spectrogram(x, window, overlap, nfft, Fs, 'yaxis');
 title('Original Spectrogram');
+[original_spectrogram, ~, ~, ~] = spectrogram(x, window, overlap, nfft, Fs);
+
+% Step 4: Perform SVD on the spectrogram
+[U, S, V] = svd(original_spectrogram);
+
+% Step 5: Truncate SVD at k = 250 components
+k = 250;
+U_trunc = U(:, 1:k);
+S_trunc = S(1:k, 1:k);
+V_trunc = V(:, 1:k);
+spectrogram_trunc = U_trunc * S_trunc * V_trunc';
+
+% Step 6: Reconstruct audio from truncated spectrogram using Griffin-Lim algorithm
+reconstructed_spectrogram = abs(spectrogram_trunc);
+reconstructed_audio = istft(reconstructed_spectrogram, window, overlap, nfft, Fs);
+sound(reconstructed_audio, Fs);
+
+% Step 7: Plot original and truncated spectrograms
+figure;
+subplot(2, 1, 1);
+imagesc(log(original_spectrogram + 1));
+title('Original Spectrogram (log scale)');
+xlabel('Time');
+ylabel('Frequency');
 colorbar;
 
-subplot(2,1,2);
-imagesc(t, f, log(abs(S_compressed)));
-axis xy;
-xlabel('Time (s)');
-ylabel('Frequency (Hz)');
-title('Compressed Spectrogram (k=250)');
+subplot(2, 1, 2);
+imagesc(log(abs(spectrogram_trunc) + 1));
+title('Truncated Spectrogram (log scale)');
+xlabel('Time');
+ylabel('Frequency');
 colorbar;
 
-% Step 5: Listen to original and reconstructed audio
+% Play original audio
 disp('Playing original audio...');
-soundsc(y, fs);
-pause(length(y)/fs);
+sound(x, Fs);
 
+% Pause before playing reconstructed audio
+pause(length(x)/Fs);
+
+% Play reconstructed audio
 disp('Playing reconstructed audio...');
-soundsc(audio_reconstructed, fs);
+sound(reconstructed_audio, Fs);
 
-
+% Clean up - delete downloaded audio file
+delete(filename);
+disp('Deleted downloaded audio file.');
