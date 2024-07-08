@@ -9,7 +9,7 @@ Leverage [Singular Value Decomposition](  https://en.m.wikipedia.org/wiki/Singul
 
 ### How does SVD on audio works
 
-The project converts audio signals into spectrograms, applies [Singular Value Decomposition](https://en.wikipedia.org/wiki/Singular_value_decomposition) to compress the data, and reconstructs the audio from the compressed spectrogram. The steps include:
+The project converts audio signals into spectrograms, applies Singular Value Decomposition to compress the data, and reconstructs the audio from the compressed spectrogram. The steps include:
 1. **Audio to Spectrogram**: Transform the audio signal into its spectrogram representation using Short-Time Fourier Transform (STFT). This breaks down the audio into time-frequency components.
 2. **Spectrogram to SVD**: Decompose the spectrogram matrix using SVD, which separates it into singular vectors and values, allowing the reduction of dimensionality.
 3. **SVD to Spectrogram**: Truncate the singular values to compress the spectrogram data. The number of singular values retained determines the compression level and quality.
@@ -30,7 +30,7 @@ In this project, an analysis of the memory space saved by using SVD for audio co
 
 ### On Google Colab:
 
-1. Open the notebook on [Google Colab](https://colab.research.google.com/).
+1. Open the notebook on [Google Colab][(https://colab.research.google.com/](https://githubtocolab.com/mich1803/SVD-Audio-Compression/blob/main/SVD_AudioCompression.ipynb)).
 2. Upload the audio file you want to compress to the file section.
 3. Modify the filename in the code to match the uploaded file.
 
