@@ -40,7 +40,7 @@ In this project, an analysis of the memory space saved by using SVD for audio co
 2. Open the `SVD-AudioCompression.ipynb` notebook in your IDE.
 3. Change the filename if you want to point to your audio file.
 
-### Matlab
+### Matlab:
 
 There is also a matlab version of the code
 1. Download the file in `matlab/SVD_AudioCompression.m`.
