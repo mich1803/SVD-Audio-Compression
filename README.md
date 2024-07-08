@@ -32,10 +32,18 @@ In this project, an analysis of the memory space saved by using SVD for audio co
 
 1. Open the notebook on [Google Colab](https://githubtocolab.com/mich1803/SVD-Audio-Compression/blob/main/SVD_AudioCompression.ipynb)).
 2. Upload the audio file you want to compress to the file section.
-3. Modify the filename in the code to match the uploaded file.
+3. Modify the filename in the code if you want to match your uploaded file.
 
 ### Locally:
 
-1. Install the requirements with `pip install -r requirements.txt`.
+1. Install the requirements with `pip install -r requirements.txt` in your virtual environment.
 2. Open the `SVD-AudioCompression.ipynb` notebook in your IDE.
-3. Change the filename to point to your audio file.
+3. Change the filename if you want to point to your audio file.
+
+### Matlab
+
+There is also a matlab version of the code
+1. Download the file in `matlab/SVD_AudioCompression.m`.
+2. Install the add-on `Signal Processing Toolbox`.
+3. Run with the song you want changing the filename at the beginning of the script.
+
