@@ -42,7 +42,7 @@ In this project, an analysis of the memory space saved by using SVD for audio co
 
 ### Matlab:
 
-There is also a matlab version of the code
+There is also a (worse performing) matlab version of the code
 1. Download the file in `matlab/SVD_AudioCompression.m`.
 2. Install the add-on `Signal Processing Toolbox`.
 3. Run with the song you want changing the filename at the beginning of the script.
