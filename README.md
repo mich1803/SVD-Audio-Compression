@@ -30,7 +30,7 @@ In this project, an analysis of the memory space saved by using SVD for audio co
 
 ### On Google Colab:
 
-1. Open the notebook on [Google Colab](https://githubtocolab.com/mich1803/SVD-Audio-Compression/blob/main/SVD_AudioCompression.ipynb)).
+1. Open the notebook on [Google Colab](https://githubtocolab.com/mich1803/SVD-Audio-Compression/blob/main/SVD_AudioCompression.ipynb).
 2. Upload the audio file you want to compress to the file section.
 3. Modify the filename in the code if you want to match your uploaded file.
 
