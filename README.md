@@ -15,10 +15,6 @@ The project converts audio signals into spectrograms, applies Singular Value Dec
 3. **SVD to Spectrogram**: Truncate the singular values to compress the spectrogram data. The number of singular values retained determines the compression level and quality.
 4. **Spectrogram to Audio**: Reconstruct the audio signal from the compressed spectrogram using the Griffin-Lim algorithm.
 
-### Griffin-Lim Algorithm
-
-To improve the quality of the reconstructed audio:
-- **Phase Reconstruction**: After applying SVD, the phase information might be lost or altered. The Griffin-Lim algorithm iteratively estimates the phase to enhance the quality of the reconstructed audio from its magnitude spectrogram.
 
 ### Memory Space Analysis
 
